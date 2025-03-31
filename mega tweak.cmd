@@ -436,8 +436,6 @@ echo                  ^|                                                        
 echo                  ^|                                                               ^|
 echo                  ^|                                                               ^|
 echo                  ^|      [0] Return to Main Menu                                  ^|
-echo                  ^|      [7] Exit                                                 ^|
-echo                  ^|                                                               ^|
 echo                  ^|_______________________________________________________________^|
 echo.          
 choice /C:1230 /N /M ".                   Enter Your Choice [1,2,3,0] : "
