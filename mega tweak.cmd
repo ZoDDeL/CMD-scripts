@@ -42,11 +42,14 @@ echo                  ^|                                                        
 echo                  ^|      [6] Windows Defender Scheduler                           ^|
 echo                  ^|                                                               ^|
 echo                  ^|      [7] Windows Update Stuff                                 ^|
+echo                  ^|                                                               ^|
+echo                  ^|      [8] Offline Check (ping google 8.8.8.8)                  ^|
 echo                  ^|_______________________________________________________________^|
 echo.          
-choice /C:1234567 /N /M ".                   Enter Your Choice [1,2,3,4,5,6,7] : "
+choice /C:12345678 /N /M ".                   Enter Your Choice [1,2,3,4,5,6,7,8] : "
 
 
+if errorlevel  8 goto:OfflineCheckMenu
 if errorlevel  7 goto:WinUpdateStuffMenu
 if errorlevel  6 goto:DefenderScheduleMenu
 if errorlevel  5 goto:SuperDNSMenu
@@ -58,10 +61,26 @@ if errorlevel  1 goto:ActivateWindowsMenu
 
 ::========================================================================================================================================
 
+:OfflineCheckMenu
+setlocal
+mode con cols=68 lines=16
+
+ping 8.8.8.8
+
+echo press any key to go back to menu
+pause >nul
+cls
+endlocal
+goto MainMenu
+
+
+::========================================================================================================================================
+
 :ActivateWindowsMenu
 setlocal
 mode con cols=98 lines=26
 powershell -c "irm https://get.activated.win | iex"
+
 
 cls
 endlocal
